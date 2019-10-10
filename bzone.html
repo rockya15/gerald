@@ -3,10 +3,34 @@
   <head>
     <title>🅱️-Zone</title>
     <script src="https://styles.simplexshotz.tk/setup.js"></script>
+    <style>
+      #B {
+        position: absolute;
+        z-index: 1000;
+        left: 0px;
+        top: 0px;
+        border: 3px solid rgb(0, 0, 0);
+        background-color: rgb(255, 0, 0);
+        color: rgb(255, 255, 255);
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        vertical-align: middle;
+      }
+    </style>
   </head>
   <body style="display: none;">
     <h1>Welcome to the 🅱️-Zone!</h1>
     <p>This zone is clearly the best zone as it zones in on zoning in on zones that zone in on zoning in on zoned in zones.</p>
     <p>If you think this zone sucks (you're probably right), then you can go <a href="http://geraldtodd.com/">back to home</a>.</p>
+    <div id="B" onmouseover="move()">B</div>
+    <script>
+      function move() {
+        var b = document.getElementById("B");
+        b.style.left = (Math.random() * (window.innerWidth - 56)) + "px";
+        b.style.top = (Math.random() * (window.innerHeight - 56)) + "px";
+      }
+      move();
+    </script>
   </body>
 </html>
