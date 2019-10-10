@@ -107,6 +107,10 @@
         document.getElementById("viewcount").innerHTML = "This page has been viewed " + (d + 1) + " times.";
         ref.viewcount.set(d + 1);
       });
+      ref.viewcount.on("value", function(data) {
+        var d = data.val();
+        document.getElementById("viewcount").innerHTML = "This page has been viewed " + d + " times.";
+      });
     </script>
   </body>
 </html>
