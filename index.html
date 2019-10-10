@@ -41,7 +41,9 @@
         font-size: 8pt;
       }
     </style>
-    <icon>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
   </head>
   
   <body>
@@ -79,7 +81,31 @@
       <li><form class=left action="szone.html"><center><button style="background-color:#B0EEE5">S-Zone</button></center></form></li>
     </ul>
     <p><center><b>Disclaimer:</b> This website is entirely satire and all information found on it should be taken with a grain of salt. This page has been endorsed by Gerald Todd.</center></p>
+    <div id="viewcount">Loading...</div>
     <video autoplay><source src=gMusic.mp3></video>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyC6Gp5WOXjMqzbrt5EYTt4ux4I6dCzRRv4",
+        authDomain: "geraldtodd-8a144.firebaseapp.com",
+        databaseURL: "https://geraldtodd-8a144.firebaseio.com",
+        projectId: "geraldtodd-8a144",
+        storageBucket: "geraldtodd-8a144.appspot.com",
+        messagingSenderId: "844124029254",
+        appId: "1:844124029254:web:9de7897b95cb8269dfa547",
+        measurementId: "G-XTQ181S21J"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      var database = firebase.database();
+      var ref = {
+        viewcount: database.ref("viewcount")
+      };
+      ref.viewcount.once("value", function(data) {
+        var d = data.val();
+        document.getElementById("viewcount").innerHTML = "This page has been viewed " + (d + 1) + " times.";
+        ref.viewcount.set(d + 1);
+      });
+    </script>
   </body>
-
 </html>
