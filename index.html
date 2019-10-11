@@ -85,6 +85,7 @@
     <center><div id="viewcount">Loading...</div></center>
     <video autoplay><source src=resources/audio/gMusic.mp3></video>
     <script>
+      // Firebase Configuration:
       var firebaseConfig = {
         apiKey: "AIzaSyC6Gp5WOXjMqzbrt5EYTt4ux4I6dCzRRv4",
         authDomain: "geraldtodd-8a144.firebaseapp.com",
@@ -95,46 +96,54 @@
         appId: "1:844124029254:web:9de7897b95cb8269dfa547",
         measurementId: "G-XTQ181S21J"
       };
-      // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
       var database = firebase.database();
       var ref = {
         viewcount: database.ref("viewcount")
       };
+      
+      // Increment View Count:
       ref.viewcount.once("value", function(data) {
-        var d = data.val();
-        document.getElementById("viewcount").innerHTML = "This page has been viewed " + (d + 1) + " times.";
-        ref.viewcount.set(d + 1);
+        var d = data.val(); // get the current view count
+        document.getElementById("viewcount").innerHTML = "This page has been viewed " + (d + 1) + " times."; // display the view count
+        ref.viewcount.set(d + 1); // increment the view count
       });
+      // Update View Count:
       ref.viewcount.on("value", function(data) {
-        var d = data.val();
-        document.getElementById("viewcount").innerHTML = "This page has been viewed " + d + " times.";
+        var d = data.val(); // get the current view count
+        document.getElementById("viewcount").innerHTML = "This page has been viewed " + d + " times."; // display the view count
       });
-      var t = [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1];
+      
+      // Bobbleheads:
+      var t = [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1]; // starting positions (1 = flipped, 0 = not flipped)
       setInterval(function() {
-        var f = document.getElementsByClassName("face");
-        for (var i = 0; i < f.length; i++) {
-          t[i] = !t[i];
-          if (t[i]) {
+        var f = document.getElementsByClassName("face"); // get all face elements
+        for (var i = 0; i < f.length; i++) { // loop through all face elements
+          t[i] = !t[i]; // flip the stored value
+          if (t[i]) { // if flipped, change the x scale so it appears flipped
             f[i].style.transform = "scaleX(-1)";
-          } else {
+          } else { // otherwise reset it back to normal
             f[i].style.transform = "scaleX(1)";
           }
         }
-      }, 500);
+      }, 500); // 500ms delay
+      
+      // Color-Changing Text:
       var h = 0;
       setInterval(function() {
-        var c = document.getElementsByClassName("color");
-        var rgb = HSVtoRGB(h / 360, 1, 0.8);
-        for (var i = 0; i < c.length; i++) {
-          c[i].style.color = "rgb(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ")";
+        var c = document.getElementsByClassName("color"); // get all color elements
+        var rgb = HSVtoRGB(h / 360, 1, 0.8); // get the current rgb color based off of "h"
+        for (var i = 0; i < c.length; i++) { // loop through all color elements
+          c[i].style.color = "rgb(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ")"; // Set their color
         }
-        h++;
-        if (h > 360) {
+        h++; // increment "h"
+        if (h > 360) { // reset "h" once it hits 360 degrees
           h = 0;
         }
       }, 0);
+      
+      // Convert HSV to RGB:
       // https://stackoverflow.com/questions/17242144/javascript-convert-hsb-hsv-color-to-rgb-accurately
       function HSVtoRGB(h, s, v) {
         var r, g, b, i, f, p, q, t;
