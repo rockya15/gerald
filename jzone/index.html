@@ -4,7 +4,7 @@
     <title>JZone</title>
   </head>
   <body background="/resources/images/morty.jpg">
-    <center><form><input type="button" value="vault" onClick="passWord()"></form></center>
+    <center><form><input type="button" value="vault" onclick="password()"></form></center>
     <img src="/resources/images/rick.gif" height="100%"  width="100%">
     <marquee scrollamount="20" behavior="alternate">
       <img src="/resources/images/yes.png">
@@ -19,24 +19,18 @@
     <video autoplay controls><source src="/resources/audio/mortytheme.mp3"></video>
 
     <script>
-      function passWord() {
-        var testV = 1;
-        var pass1 = prompt('Please Enter Your Password',' ');
-        while (testV < 3) {
-          if (!pass1) 
-            history.go(-1);
-          if (pass1.toLowerCase() === "jojo?") {               
-            alert('You may now come in');
-            window.open('http://geraldtodd.com/jzone/rickvault.html', '_self');
+      function password() {
+        var p;
+        for (var i = 0; i < 3; i++) {
+          p = promt("Please enter your password.");
+          if (p && p === "jojo?") {
+            alert("You may now come in");
+            window.open("http://geraldtodd.com/jzone/rickvault.html", "_self");
             break;
-          } 
-          testV++;
-          var pass1 = prompt('Access Denied - Password Incorrect, Please Try Again.');
+          } else {
+            history.go(-1);
+          }
         }
-        if (pass1.toLowerCase() !== "password" && testV === 3) 
-          history.go(-1);
-        return " ";
-      } 
     </script>
   </body>
 </html>
