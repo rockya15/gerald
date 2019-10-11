@@ -1,56 +1,42 @@
-<SCRIPT>
-function passWord() {
-var testV = 1;
-var pass1 = prompt('Please Enter Your Password',' ');
-while (testV < 3) {
-if (!pass1) 
-history.go(-1);
-if (pass1.toLowerCase() == "jojo?") {               
-alert('You may now come in');
-window.open('http://geraldtodd.com/jzone/rickvault.html');
-break;
-} 
-testV+=1;
-var pass1 = 
-prompt('Access Denied - Password Incorrect, Please Try Again.','');
-}
-if (pass1.toLowerCase()!="password" & testV ==3) 
-history.go(-1);
-return " ";
-} 
-</SCRIPT>
-<CENTER>
-<FORM>
-<input type="button" value="vault" onClick="passWord()">
-</FORM>
-</CENTER>
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
   <head>
     <title>JZone</title>
   </head>
   <body background="/resources/images/morty.jpg">
-   <img src="/resources/images/rick.gif" height="100%"  width="100%">
-   <marquee scrollamount="20" behavior="alternate">
-     <img src="/resources/images/yes.png">
+    <center><form><input type="button" value="vault" onClick="passWord()"></form></center>
+    <img src="/resources/images/rick.gif" height="100%"  width="100%">
+    <marquee scrollamount="20" behavior="alternate">
+      <img src="/resources/images/yes.png">
     </marquee>
     <h1> <font face="arial" color="red">hello and welcome to J zone im your host rick lets get right into it </font></h1>
     <br>
     <h2> <font face="arial" color="red">In case you haven't reallized this is the section of geraldtodd.com that is dedicated to RICK AND MORTY </font><h2>
     <h2> <font face="arial" color="red">In this section there will be lots of fun stuff like a place to see morty and of course me RICK </font> <h2> 
-      <h3> <font face="Comic sans MS" color="blue"> OOOOOOOOO OOH GEEZ RICK MAKING A WEBSITE IS A LOT FO HAR WORK AND WE PAID 8 SCHMECKLES FOR THIS DOMAIN </font></h3>
-        <h4> <font face="Comic sans MS" color="blue">SHUT UP MORTY god jesus christ why do i take you along anywhere </font> </h4>
-    
-    
-<video autoplay controls><source src="/resources/audio/mortytheme.mp3"></video>
+    <h3> <font face="Comic sans MS" color="blue"> OOOOOOOOO OOH GEEZ RICK MAKING A WEBSITE IS A LOT FO HAR WORK AND WE PAID 8 SCHMECKLES FOR THIS DOMAIN </font></h3>
+    <h4> <font face="Comic sans MS" color="blue">SHUT UP MORTY god jesus christ why do i take you along anywhere </font> </h4>
 
+    <video autoplay controls><source src="/resources/audio/mortytheme.mp3"></video>
+
+    <script>
+      function passWord() {
+        var testV = 1;
+        var pass1 = prompt('Please Enter Your Password',' ');
+        while (testV < 3) {
+          if (!pass1) 
+            history.go(-1);
+          if (pass1.toLowerCase() === "jojo?") {               
+            alert('You may now come in');
+            window.open('http://geraldtodd.com/jzone/rickvault.html', '_self');
+            break;
+          } 
+          testV++;
+          var pass1 = prompt('Access Denied - Password Incorrect, Please Try Again.');
+        }
+        if (pass1.toLowerCase() !== "password" && testV === 3) 
+          history.go(-1);
+        return " ";
+      } 
+    </script>
   </body>
-          
 </html>
