@@ -134,6 +134,13 @@
       setInterval(function() {
         var c = document.getElementsByClassName("color"); // get all color elements
         var rgb = HSVtoRGB(h / 360, 1, 0.8); // get the current rgb color based off of "h"
+        // HALLOWEEN THEME ---
+        rgb = {
+          r: 255,
+          g: Math.sin(h) * 127,
+          b: 0
+        };
+        // ---
         for (var i = 0; i < c.length; i++) { // loop through all color elements
           c[i].style.color = "rgb(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ")"; // Set their color
         }
