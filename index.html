@@ -38,6 +38,30 @@
         font-family: "Comic Sans MS";
         font-size: 8pt;
       }
+      
+      /* Cover */
+      .trans {
+        -webkit-transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1) 0.25s;  
+        -moz-transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1) 0.25s;
+        -o-transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1) 0.25s;
+        -ms-transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1) 0.25s;
+        transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1) 0.25s;
+      }
+      .cover {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        background-color: rgba(0, 0, 0, 0);
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+        height: 500px;
+        z-index: 1;
+      }
+      .cover-active {
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(2px), ;
+      }
     </style>
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
@@ -84,7 +108,18 @@
     <p><center><b>Disclaimer:</b> This website is entirely satire and all information found on it should be taken with a grain of salt. This page has been endorsed by Gerald Todd.</center></p>
     <center><div id="viewcount">Loading...</div></center>
     <video autoplay><source src=resources/audio/gMusic.mp3></video>
+    <div id="cover" class="cover trans">
     <script>
+      function toggle(id, cl) {
+        if (document.getElementById(id).classList.contains(cl + "-active")) {
+          document.getElementById(id).classList.remove(cl + "-active");
+        } else {
+          document.getElementById(id).classList.add(cl + "-active");
+        }
+      }
+      window.onload = function() {
+        toggle("cover", "cover");
+      };
       // Firebase Configuration:
       var firebaseConfig = {
         apiKey: "AIzaSyC6Gp5WOXjMqzbrt5EYTt4ux4I6dCzRRv4",
