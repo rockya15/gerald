@@ -60,7 +60,7 @@
       }
       .cover-active {
         background-color: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(2px), ;
+        backdrop-filter: blur(2px);
       }
     </style>
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
@@ -114,6 +114,9 @@
         document.getElementById("cover").style.width = window.innerWidth + "px";
         document.getElementById("cover").style.height = window.innerHeight + "px";
       }
+      document.getElementById("cover").onload = function() {
+        updateDimensions();
+      };
       window.onload = function() {
         updateDimensions();
       };
