@@ -114,11 +114,9 @@
         document.getElementById("cover").style.width = window.innerWidth + "px";
         document.getElementById("cover").style.height = window.innerHeight + "px";
       }
-      document.getElementById("cover").onload = function() {
-        updateDimensions();
-      };
       window.onload = function() {
         updateDimensions();
+        toggle("cover", "cover");
       };
       window.onresize = function() {
         updateDimensions();
@@ -130,9 +128,6 @@
           document.getElementById(id).classList.add(cl + "-active");
         }
       }
-      window.onload = function() {
-        toggle("cover", "cover");
-      };
       // Firebase Configuration:
       var firebaseConfig = {
         apiKey: "AIzaSyC6Gp5WOXjMqzbrt5EYTt4ux4I6dCzRRv4",
