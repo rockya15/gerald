@@ -117,9 +117,9 @@
       window.onload = function() {
         updateDimensions();
         toggle("cover", "cover");
-      };
-      window.onresize = function() {
-        updateDimensions();
+        setTimeout(function() {
+          document.getElementById("cover").style.display = "none";
+        }, 2000);
       };
       function toggle(id, cl) {
         if (document.getElementById(id).classList.contains(cl + "-active")) {
