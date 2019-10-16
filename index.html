@@ -41,11 +41,11 @@
       
       /* Cover */
       .trans {
-        -webkit-transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1) 0.25s;  
-        -moz-transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1) 0.25s;
-        -o-transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1) 0.25s;
-        -ms-transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1) 0.25s;
-        transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1) 0.25s;
+        -webkit-transition: all 1s cubic-bezier(0.2, 0.6, 0.3, 1) 1s;  
+        -moz-transition: all 1s cubic-bezier(0.2, 0.6, 0.3, 1) 1s;
+        -o-transition: all 1s cubic-bezier(0.2, 0.6, 0.3, 1) 1s;
+        -ms-transition: all 1s cubic-bezier(0.2, 0.6, 0.3, 1) 1s;
+        transition: all 1s cubic-bezier(0.2, 0.6, 0.3, 1) 1s;
       }
       .cover {
         position: fixed;
@@ -108,8 +108,18 @@
     <p><center><b>Disclaimer:</b> This website is entirely satire and all information found on it should be taken with a grain of salt. This page has been endorsed by Gerald Todd.</center></p>
     <center><div id="viewcount">Loading...</div></center>
     <video autoplay><source src=resources/audio/gMusic.mp3></video>
-    <div id="cover" class="cover trans">
+    <div id="cover" class="cover trans cover-active">
     <script>
+      function updateDimensions() {
+        document.getElementById("cover").style.width = window.innerWidth + "px";
+        document.getElementById("cover").style.height = window.innerHeight + "px";
+      }
+      window.onload = function() {
+        updateDimensions();
+      };
+      window.onresize = function() {
+        updateDimensions();
+      };
       function toggle(id, cl) {
         if (document.getElementById(id).classList.contains(cl + "-active")) {
           document.getElementById(id).classList.remove(cl + "-active");
