@@ -122,7 +122,7 @@
     <video autoplay style="height: 0px;"><source src=resources/audio/gMusic.mp3></video>
     <div id="feedback-container">
       <textarea id="feedback" placeholder="Have any feedback? Enter it here and then click 'Send.' All feedback is entirely anonymous."></textarea><br>
-      <button onclick="submitFeedback()" class="trans">Send</button>
+      <button onclick="submitFeedback()" class="trans">Send</button><button onclick="showFeedback()" class="trans">Show Feedback</button>
     </div>
     <p id="reply" style="display: none;">Thanks for your feedback.</p>
     <script>
@@ -231,6 +231,17 @@
           temp.push(fb);
           ref.feedback.set(temp);
         });
+      }
+      
+      function showFeedback() {
+        if (prompt("Enter the password to retrieve the feedback.") === "TODDboi") {
+          ref.feedback.once("value", function(data) {
+            var d = data.val();
+            for (var i in d) {
+              alert(d[i]);
+            }
+          });
+        }
       }
     </script>
       <!-- _
