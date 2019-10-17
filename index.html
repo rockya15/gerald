@@ -237,10 +237,17 @@
         if (prompt("Enter the password to retrieve the feedback.") === "TODDboi") {
           ref.feedback.once("value", function(data) {
             var d = data.val();
+            var n = 0;
+            for (var i in d) {
+              n++;
+            }
+            alert("Showing all feedback. (" + n + ")");
             for (var i in d) {
               alert(d[i]);
             }
           });
+        } else {
+          alert("That password is incorrect.");
         }
       }
     </script>
