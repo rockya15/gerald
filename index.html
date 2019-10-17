@@ -109,26 +109,12 @@
     <p><center><b>Disclaimer:</b> This website is entirely satire and all information found on it should be taken with a grain of salt. This page has been endorsed by Gerald Todd.</center></p>
     <center><div id="viewcount">Loading...</div></center>
     <video autoplay><source src=resources/audio/gMusic.mp3></video>
-    <div id="cover" class="cover trans cover-active">
+    <div id="feedback-container">
+      <textarea id="feedback" placeholder="Have any feedback? Enter it here and then click \"Send\". All feedback is entirely anonymous."></textarea>
+      <button onclick="submitFeedback()">Send</button>
+    </div>
+    <p id="reply" style="display: none;">Thanks for your feedback.</p>
     <script>
-      function updateDimensions() {
-        document.getElementById("cover").style.width = window.innerWidth + "px";
-        document.getElementById("cover").style.height = window.innerHeight + "px";
-      }
-      window.onload = function() {
-        updateDimensions();
-        toggle("cover", "cover");
-        setTimeout(function() {
-          document.getElementById("cover").style.display = "none";
-        }, 2000);
-      };
-      function toggle(id, cl) {
-        if (document.getElementById(id).classList.contains(cl + "-active")) {
-          document.getElementById(id).classList.remove(cl + "-active");
-        } else {
-          document.getElementById(id).classList.add(cl + "-active");
-        }
-      }
       // Firebase Configuration:
       var firebaseConfig = {
         apiKey: "AIzaSyC6Gp5WOXjMqzbrt5EYTt4ux4I6dCzRRv4",
@@ -144,7 +130,8 @@
       firebase.analytics();
       var database = firebase.database();
       var ref = {
-        viewcount: database.ref("viewcount")
+        viewcount: database.ref("viewcount"),
+        feedback: database.ref("feedback")
       };
       
       // Increment View Count:
@@ -216,6 +203,23 @@
             g: Math.round(g * 255),
             b: Math.round(b * 255)
         };
+      }
+      
+      function submitFeedback() {
+        var fb = document.getElementById("feedback").value;
+        if (!fb) {
+          return;
+        }
+        document.getElementById("feedback-container").style.display = "none";
+        document.getElementById("reply").style.display = "block";
+        ref.feedback.once("value", function(data) {
+          var temp = data.val();
+          if (!temp) {
+            temp = [];
+          }
+          temp.push(fb);
+          ref.feedback.set(temp);
+        });
       }
     </script>
       <!-- _
