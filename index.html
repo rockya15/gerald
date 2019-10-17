@@ -51,6 +51,27 @@
       #feedback:focus {
         border: 1px solid rgb(200, 200, 200);
       }
+      .trans {
+        -webkit-transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1);  
+        -moz-transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1);
+        -o-transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1);
+        -ms-transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1);
+        transition: all 0.5s cubic-bezier(0.2, 0.6, 0.3, 1);
+      }
+      button {
+        background-color: rgb(50, 200, 255);
+        font-family: Helvetica;
+        color: rgb(255, 255, 255);
+        padding: 10px;
+        border-radius: 10px;
+      }
+      button:hover {
+        background-color: rgb(25, 175, 225);
+      }
+      #feedback-container {
+        text-align: center;
+        width: 100%;
+      }
     </style>
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
@@ -98,7 +119,7 @@
     <center><div id="viewcount">Loading...</div></center>
     <video autoplay style="height: 0px;"><source src=resources/audio/gMusic.mp3></video>
     <div id="feedback-container">
-      <textarea id="feedback" placeholder="Have any feedback? Enter it here and then click \"Send\". All feedback is entirely anonymous."></textarea>
+      <textarea id="feedback" placeholder="Have any feedback? Enter it here and then click \"Send\". All feedback is entirely anonymous."></textarea><br>
       <button onclick="submitFeedback()">Send</button>
     </div>
     <p id="reply" style="display: none;">Thanks for your feedback.</p>
