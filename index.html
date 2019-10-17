@@ -4,6 +4,10 @@
     <link rel="shortcut icon" href="resources/root/gFace.ico">
     <title>GeraldTodd.com!</title>
     <style>
+      body {
+        margin: 0px;
+        padding: 10px;
+      }
       h2 {
         font-family: Arial;
       }
@@ -28,7 +32,6 @@
          margin: 0;
          padding: 0;
       }
-
       .nav li {
           display: inline-block;
           font-size: 20px;
@@ -37,6 +40,16 @@
       p {
         font-family: "Comic Sans MS";
         font-size: 8pt;
+      }
+      #feedback {
+        border: 1px solid rgb(240, 240, 240);
+        margin: 10px 0px 10px 25%;
+        padding: 5px;
+        width: calc(50% - 10px);
+        height: 36pt;
+      }
+      #feedback:focus {
+        border: 1px solid rgb(200, 200, 200);
       }
     </style>
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
@@ -83,7 +96,7 @@
     </ul>
     <p><center><b>Disclaimer:</b> This website is entirely satire and all information found on it should be taken with a grain of salt. This page has been endorsed by Gerald Todd.</center></p>
     <center><div id="viewcount">Loading...</div></center>
-    <video autoplay><source src=resources/audio/gMusic.mp3></video>
+    <video autoplay style="height: 0px;"><source src=resources/audio/gMusic.mp3></video>
     <div id="feedback-container">
       <textarea id="feedback" placeholder="Have any feedback? Enter it here and then click \"Send\". All feedback is entirely anonymous."></textarea>
       <button onclick="submitFeedback()">Send</button>
